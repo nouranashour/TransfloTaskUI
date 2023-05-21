@@ -1,0 +1,36 @@
+<div class="container my-5">
+    <div class="col-12 row">
+        <div class="m-2 col-12">
+            <a class="btn btn-primary" href="#" (click)="InsertBulk()">create Bulk of 100 Driver</a> &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-success"  routerLink="drivers/add">Add Driver</a> &nbsp; &nbsp; &nbsp;
+            <a class="btn"  style="background-color: #a9a110" href="#" (click)="AlphabetizeDrivers()">Alphabetize Drivers</a> &nbsp; &nbsp; &nbsp;
+        </div>   
+    </div>
+    <br>
+<table class="table table-striped" *ngIf="drivers && drivers.length > 0" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phonse Number</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Driver of drivers" >
+            <td>#</td>
+            <td>{{Driver.firstName}}</td>
+            <td>{{Driver.lastName}}</td>
+            <td>{{Driver.email}}</td>
+            <td>{{Driver.phoneNumber}}</td>      
+            <td><a class="btn btn-primary" [routerLink]="['/driver','edit',Driver.id]">Edit</a>
+                <span>&nbsp;&nbsp;</span>
+             <a class="btn btn-danger" href="#" (click)="Delete_Driver(Driver.id)">Delete</a>
+            
+        </tr>
+    </tbody>
+  </table>
+  <p *ngIf="!drivers || drivers.length <= 0">No Drivers Available</p>
+  </div>
